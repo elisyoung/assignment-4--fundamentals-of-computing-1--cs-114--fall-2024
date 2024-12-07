@@ -1,13 +1,9 @@
 Shapes myShapes = new Shapes();
 Board myBoard = new Board();
 int [] squaresOnTheBoard = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-int input;
-boolean gameIsComplete;
 
 void setup() {
   size(500, 500);
-  
-  input = 9;
   
   myBoard.drawBoard();
   
@@ -23,6 +19,7 @@ void keyPressed() {
   int nextPlayForComputer;
   boolean computerWins = false;
   boolean userWins = false;
+  int input = 9;
 
   if(keyPressed) {
     switch(key) {
@@ -77,22 +74,13 @@ void keyPressed() {
         break;
     }
     
-    if(input < 9 && squaresOnTheBoard[input] == 0) {
+    if(input < 9 && squaresOnTheBoard[input] == 0 && (myBoard.testForEndOfGame() == 0)) {
     //draws an O indicating the user's play
       myShapes.drawShape("O", input);
       squaresOnTheBoard[input] = 1;
-      println("you entered: " + input);
       input = 9;
       
-      if((myBoard.testForEndOfGame()) != 0){
-        gameIsComplete = true;
-      }
-      
-      if(gameIsComplete) {
-        println("game is complete");
-      } else {
-        println("game still in progress");
-        
+      if(myBoard.testForEndOfGame() == 0) {
       //computer makes the next move
         nextPlayForComputer = 9;
         while(nextPlayForComputer == 9) {
@@ -107,33 +95,30 @@ void keyPressed() {
       }
       
     //checks for wins
-    switch(myBoard.testForEndOfGame()) {
+    switch((myBoard.testForEndOfGame())) {
       case 1:
         println("game complete, user won");
-        gameIsComplete = true;
         
         break;
         
       case 2:
         println("game complete, computer won");
-        gameIsComplete = true;
         
         break;
         
       case 3:
         println("game complete, no winner");
-        gameIsComplete = true;
         
       default:
         println("game still in progress");
     }
       
-      if(gameIsComplete) {
-       println("game is complete"); 
-      }
-      
     } else {
-      println("invalid input");
+        if(myBoard.testForEndOfGame() == 0) {
+          println("invalid input");
+        } else {
+          println("game is complete");
+        }
     }
   }
 }
