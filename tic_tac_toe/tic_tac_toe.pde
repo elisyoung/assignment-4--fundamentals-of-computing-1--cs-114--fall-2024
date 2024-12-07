@@ -22,6 +22,8 @@ void keyPressed() {
   int input = 9;
   int keyValue;
 
+
+  //checks if valid key is pressed and assigns value to input
   if(keyPressed) {
     keyValue = key - '0';
     if(0 <= keyValue && keyValue < 9) {
@@ -31,13 +33,13 @@ void keyPressed() {
     }
     
     if(input < 9 && squaresOnTheBoard[input] == 0 && (myBoard.testForEndOfGame() == 0)) {
-    //draws an O indicating the user's play
+      //draws an O indicating the user's play
       myShapes.drawShape("O", input);
       squaresOnTheBoard[input] = 1;
       input = 9;
       
+      //if game continues, computer makes next move
       if(myBoard.testForEndOfGame() == 0) {
-      //computer makes the next move
         nextPlayForComputer = 9;
         while(nextPlayForComputer == 9) {
           int randomNumber = int(random(8));
@@ -50,7 +52,7 @@ void keyPressed() {
         squaresOnTheBoard[nextPlayForComputer] = 2;
       }
       
-    //checks for wins
+    //checks for wins or board full
     switch((myBoard.testForEndOfGame())) {
       case 1:
         println("game complete, user won");
