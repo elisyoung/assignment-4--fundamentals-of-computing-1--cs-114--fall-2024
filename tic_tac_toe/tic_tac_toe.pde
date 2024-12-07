@@ -28,7 +28,6 @@ void keyPressed() {
   int input = 9;
   int keyValue;
 
-
   //checks if valid key is pressed and assigns value to input
   if(keyPressed) {
     keyValue = key - '0';

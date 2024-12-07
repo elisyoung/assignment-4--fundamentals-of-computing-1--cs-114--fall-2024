@@ -10,7 +10,6 @@ class Shapes {
     int middleOfSquareX = (rightSideOfSquareX + leftSideOfSquareX) / 2;
     int middleOfSquareY = (topSideOfSquareY + bottomSideOfSquareY) / 2;
     
-    
     switch(shapeType) {
       case "X":
       case "x":
