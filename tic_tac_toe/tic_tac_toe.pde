@@ -1,4 +1,7 @@
 int input;
+Shapes myShapes = new Shapes();
+int [] squaresOnTheBoard = new int[9];
+boolean gameIsComplete;
 
 void setup() {
   size(500, 500);
@@ -10,17 +13,7 @@ void setup() {
 }
 
 void draw() {
-  Shapes myShapes = new Shapes();
-  
-  if(input < 9) {
-    myShapes.drawShape("O", input);
-    println("you entered: " + input);
-    input = 9;
-  }
-}
-
-void keyPressed() {
-  if(input > 8) {
+  if(keyPressed) {
     switch(key) {
       case '0':
         input = 0;
@@ -69,9 +62,30 @@ void keyPressed() {
       
       default:
         input = 9;
-        println("you did not enter a valid number");
         
         break;
+    }
+    
+    if(input < 9 && squaresOnTheBoard[input] == 0) {
+      myShapes.drawShape("O", input);
+      println("you entered: " + input);
+      squaresOnTheBoard[input] = 1;
+      input = 9;
+      
+      gameIsComplete = true;
+      
+      for(int i = 0; i < 9; i++) {
+        if(squaresOnTheBoard[i] == 0) {
+          gameIsComplete = false;
+        }
+      }
+    
+      if(gameIsComplete) {
+        println("game is complete");
+      } else {
+        println("game still in progress");
+      }
+      
     }
   }
 }
