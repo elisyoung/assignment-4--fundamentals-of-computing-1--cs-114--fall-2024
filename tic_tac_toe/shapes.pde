@@ -3,18 +3,19 @@ class Shapes {
   }
   
   void drawShape(String shapeType, int locationOfShape){
-    int rightSideX = (boardSize / 3) * ((locationOfShape % 3) + 1);
-    int leftSideX = (boardSize / 3) * ((locationOfShape % 3));
-    int topSideY = (boardSize / 3) * (locationOfShape / 3);
-    int bottomSideY = (boardSize / 3) * ((locationOfShape / 3) + 1);
-    int middleOfSquareX = (rightSideX + leftSideX) / 2;
-    int middleOfSquareY = (topSideY + bottomSideY) / 2;
+    int rightSideOfSquareX = (boardSize / 3) * ((locationOfShape % 3) + 1);
+    int leftSideOfSquareX = (boardSize / 3) * ((locationOfShape % 3));
+    int topSideOfSquareY = (boardSize / 3) * (locationOfShape / 3);
+    int bottomSideOfSquareY = (boardSize / 3) * ((locationOfShape / 3) + 1);
+    int middleOfSquareX = (rightSideOfSquareX + leftSideOfSquareX) / 2;
+    int middleOfSquareY = (topSideOfSquareY + bottomSideOfSquareY) / 2;
+    
     
     switch(shapeType) {
       case "X":
       case "x":
-        line(leftSideX, topSideY, rightSideX, bottomSideY);
-        line(rightSideX, topSideY, leftSideX, bottomSideY);
+        line(leftSideOfSquareX, topSideOfSquareY, rightSideOfSquareX, bottomSideOfSquareY);
+        line(rightSideOfSquareX, topSideOfSquareY, leftSideOfSquareX, bottomSideOfSquareY);
         
         break;
       
@@ -22,8 +23,8 @@ class Shapes {
       case "o":
       case "0":
         circle(middleOfSquareX, middleOfSquareY, boardSize/3);
+        
         break;
     }
   }
-  
 }
