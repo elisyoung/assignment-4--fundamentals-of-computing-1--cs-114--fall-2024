@@ -1,0 +1,1 @@
+int boardSize = 500;
