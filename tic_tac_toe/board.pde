@@ -7,6 +7,10 @@ class Board {
     line((boardSize * 2 / 3), 0, (boardSize * 2 / 3), boardSize);
     line(0, (boardSize/3), boardSize, (boardSize/3));
     line(0, (boardSize * 2 / 3), boardSize, (boardSize * 2 / 3));
+    line(0, 0, 0, boardSize);
+    line(0, 0, boardSize, 0);
+    line(boardSize, 0, boardSize, boardSize);
+    line(0, boardSize, boardSize, boardSize);
   }
   
   Integer testForEndOfGame(){  //determines if game is finished

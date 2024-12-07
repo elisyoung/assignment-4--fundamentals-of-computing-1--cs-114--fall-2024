@@ -4,8 +4,14 @@ int [] squaresOnTheBoard = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 void setup() {
   size(500, 500);
+  background(150, 150, 250);
+  strokeWeight(10);
+  stroke(100, 100, 200);
   
   myBoard.drawBoard();
+  
+  stroke(255, 255, 255);
+  noFill();
   
   int firstPlayForComputer = int(random(8));
   myShapes.drawShape("x", firstPlayForComputer);
