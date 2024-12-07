@@ -5,7 +5,7 @@ void setup() {
   myBoard.drawBoard();
   
   Shapes myShapes = new Shapes();
-  myShapes.drawShape("X", 5);
+  myShapes.drawShape("0", 7);
 }
 
 void draw() {

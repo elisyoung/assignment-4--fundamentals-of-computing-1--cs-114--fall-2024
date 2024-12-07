@@ -7,6 +7,8 @@ class Shapes {
     int leftSideX = (boardSize / 3) * ((locationOfShape % 3));
     int topSideY = (boardSize / 3) * (locationOfShape / 3);
     int bottomSideY = (boardSize / 3) * ((locationOfShape / 3) + 1);
+    int middleOfSquareX = (rightSideX + leftSideX) / 2;
+    int middleOfSquareY = (topSideY + bottomSideY) / 2;
     
     switch(shapeType) {
       case "X":
@@ -19,7 +21,7 @@ class Shapes {
       case "O":
       case "o":
       case "0":
-        
+        circle(middleOfSquareX, middleOfSquareY, boardSize/3);
         break;
     }
   }
