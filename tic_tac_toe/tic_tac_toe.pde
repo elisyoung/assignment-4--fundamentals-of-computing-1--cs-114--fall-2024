@@ -1,6 +1,7 @@
-int input;
 Shapes myShapes = new Shapes();
-int [] squaresOnTheBoard = new int[9];
+Board myBoard = new Board();
+int [] squaresOnTheBoard = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+int input;
 boolean gameIsComplete;
 
 void setup() {
@@ -8,16 +9,21 @@ void setup() {
   
   input = 9;
   
-  Board myBoard = new Board();
   myBoard.drawBoard();
   
   int firstPlayForComputer = int(random(8));
   myShapes.drawShape("x", firstPlayForComputer);
   squaresOnTheBoard[firstPlayForComputer] = 2;
-  
 }
 
-void draw() {
+void draw(){
+}
+
+void keyPressed() {
+  int nextPlayForComputer;
+  boolean computerWins = false;
+  boolean userWins = false;
+
   if(keyPressed) {
     switch(key) {
       case '0':
@@ -72,25 +78,62 @@ void draw() {
     }
     
     if(input < 9 && squaresOnTheBoard[input] == 0) {
+    //draws an O indicating the user's play
       myShapes.drawShape("O", input);
-      println("you entered: " + input);
       squaresOnTheBoard[input] = 1;
+      println("you entered: " + input);
       input = 9;
       
-      gameIsComplete = true;
-      
-      for(int i = 0; i < 9; i++) {
-        if(squaresOnTheBoard[i] == 0) {
-          gameIsComplete = false;
-        }
+      if((myBoard.testForEndOfGame()) != 0){
+        gameIsComplete = true;
       }
-    
+      
       if(gameIsComplete) {
         println("game is complete");
       } else {
         println("game still in progress");
+        
+      //computer makes the next move
+        nextPlayForComputer = 9;
+        while(nextPlayForComputer == 9) {
+          int randomNumber = int(random(8));
+          if(squaresOnTheBoard[randomNumber] == 0) {
+            nextPlayForComputer = randomNumber;
+          }
+        }
+        
+        myShapes.drawShape("x", nextPlayForComputer);
+        squaresOnTheBoard[nextPlayForComputer] = 2;
       }
       
+    //checks for wins
+    switch(myBoard.testForEndOfGame()) {
+      case 1:
+        println("game complete, user won");
+        gameIsComplete = true;
+        
+        break;
+        
+      case 2:
+        println("game complete, computer won");
+        gameIsComplete = true;
+        
+        break;
+        
+      case 3:
+        println("game complete, no winner");
+        gameIsComplete = true;
+        
+      default:
+        println("game still in progress");
+    }
+      
+      if(gameIsComplete) {
+       println("game is complete"); 
+      }
+      
+    } else {
+      println("invalid input");
     }
   }
 }

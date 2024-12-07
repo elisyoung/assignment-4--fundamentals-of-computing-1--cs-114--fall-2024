@@ -8,4 +8,26 @@ class Board {
     line(0, (boardSize/3), boardSize, (boardSize/3));
     line(0, (boardSize * 2 / 3), boardSize, (boardSize * 2 / 3));
   }
+  
+  Integer testForEndOfGame(){  //determines if game is finished
+    int winningIndex = 3;      //0:game continues  1:user wins  2:computer wins  3:board full
+    
+    for(int i = 0; i < 8; i++) {
+      if((winningCombinations[i][0] == 1) && (winningCombinations[i][1] == 1) && (winningCombinations[i][2] == 1)) {
+        winningIndex = 1;
+      }
+
+      if((winningCombinations[i][0] == 2) && (winningCombinations[i][1] == 2) && (winningCombinations[i][2] == 2)) {
+        winningIndex = 2;
+      }
+    }
+    
+    for(int i = 0; i < 9; i++) {
+      if(squaresOnTheBoard[i] == 0) {
+        winningIndex = 0;
+      }
+    }
+    
+    return winningIndex;
+  }
 }
