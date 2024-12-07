@@ -10,6 +10,11 @@ void setup() {
   
   Board myBoard = new Board();
   myBoard.drawBoard();
+  
+  int firstPlayForComputer = int(random(8));
+  myShapes.drawShape("x", firstPlayForComputer);
+  squaresOnTheBoard[firstPlayForComputer] = 2;
+  
 }
 
 void draw() {
