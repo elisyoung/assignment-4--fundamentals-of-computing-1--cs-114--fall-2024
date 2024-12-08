@@ -26,8 +26,6 @@ class Board {
   
   void nextMove() {
     int nextPlayForComputer;
-    boolean computerWins = false;
-    boolean userWins = false;
     int input = 9;
     int keyValue;
   
