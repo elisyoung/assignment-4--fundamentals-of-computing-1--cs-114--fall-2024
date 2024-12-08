@@ -22,5 +22,19 @@ void draw(){
 }
 
 void keyPressed() {
-  myBoard.nextMove();
+  if(keyPressed){
+    if((myBoard.checkIfKeyPressedIsValid() == true) && (myBoard.testForEndOfGame() == 0)) {
+      myBoard.placeUserMove();
+      if(myBoard.testForEndOfGame() == 0) {
+        myBoard.placeComputerMove();
+      myBoard.printGameStatus();
+      }
+    } else {
+      if(myBoard.testForEndOfGame() == 0) {
+          println("invalid input");
+      } else {
+        println("game is complete");
+      }
+    }
+  }
 }
