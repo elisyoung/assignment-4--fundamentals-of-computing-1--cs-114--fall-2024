@@ -12,22 +12,22 @@ class Board {
     squaresOnTheBoard[firstPlayForComputer] = 2;
   }
   
-  
   private Integer testForEndOfGame(){  //determines if game is finished
     int winningIndex = 3;      //0:game continues  1:user wins  2:computer wins  3:board full
     
-    for(int i = 0; i < 9; i++) {
-      if(squaresOnTheBoard[i] == 0) {
+    //checks if board is full
+    for(int currentSquare = 0; currentSquare < 9; currentSquare++) {
+      if(squaresOnTheBoard[currentSquare] == 0) {
         winningIndex = 0;
       }
     }
     
-    for(int i = 0; i < 8; i++) {
-      if((squaresOnTheBoard[WINNINGCOMBINATIONS[i][0]] == 1) && (squaresOnTheBoard[WINNINGCOMBINATIONS[i][1]] == 1) && (squaresOnTheBoard[WINNINGCOMBINATIONS[i][2]] == 1)) {
+    for(int currentWinningCombo = 0; currentWinningCombo < 8; currentWinningCombo++) {
+      if((squaresOnTheBoard[WINNINGCOMBINATIONS[currentWinningCombo][0]] == 1) && (squaresOnTheBoard[WINNINGCOMBINATIONS[currentWinningCombo][1]] == 1) && (squaresOnTheBoard[WINNINGCOMBINATIONS[currentWinningCombo][2]] == 1)) {
         winningIndex = 1;
       }
 
-      if((squaresOnTheBoard[WINNINGCOMBINATIONS[i][0]] == 2) && (squaresOnTheBoard[WINNINGCOMBINATIONS[i][1]] == 2) && (squaresOnTheBoard[WINNINGCOMBINATIONS[i][2]] == 2)) {
+      if((squaresOnTheBoard[WINNINGCOMBINATIONS[currentWinningCombo][0]] == 2) && (squaresOnTheBoard[WINNINGCOMBINATIONS[currentWinningCombo][1]] == 2) && (squaresOnTheBoard[WINNINGCOMBINATIONS[currentWinningCombo][2]] == 2)) {
         winningIndex = 2;
       }
     }
@@ -74,14 +74,12 @@ class Board {
     }
   }
   
-  
   void placeUserMove() {
     //draws an O indicating the user's play
     myShapes.drawShape("O", input);
     squaresOnTheBoard[input] = 1;  //locations with an O are labeled with the value 1 in the arrary
     input = 9;
   }
-  
   
   void placeComputerMove() {
     //determines the best move for the computer
@@ -90,23 +88,23 @@ class Board {
     //win if possible
     if(nextPlayForComputer == 9){
       int possibleNextPlay;
-      for(int i = 0; i < 8; i++) {
+      for(int currentWinningCombo = 0; currentWinningCombo < 8; currentWinningCombo++) {
         int numberOfXsInThisWinningCombo = 0;
-        possibleNextPlay = WINNINGCOMBINATIONS[i][0];
+        possibleNextPlay = WINNINGCOMBINATIONS[currentWinningCombo][0];
         
-        if(squaresOnTheBoard[WINNINGCOMBINATIONS[i][0]] == 2) {
+        if(squaresOnTheBoard[WINNINGCOMBINATIONS[currentWinningCombo][0]] == 2) {
           numberOfXsInThisWinningCombo++;
-          possibleNextPlay = WINNINGCOMBINATIONS[i][1];
+          possibleNextPlay = WINNINGCOMBINATIONS[currentWinningCombo][1];
         }
         
-        if(squaresOnTheBoard[WINNINGCOMBINATIONS[i][1]] == 2) {
+        if(squaresOnTheBoard[WINNINGCOMBINATIONS[currentWinningCombo][1]] == 2) {
           numberOfXsInThisWinningCombo++;
-          possibleNextPlay = WINNINGCOMBINATIONS[i][2];
+          possibleNextPlay = WINNINGCOMBINATIONS[currentWinningCombo][2];
         }
         
-        if(squaresOnTheBoard[WINNINGCOMBINATIONS[i][2]] == 2) {
+        if(squaresOnTheBoard[WINNINGCOMBINATIONS[currentWinningCombo][2]] == 2) {
           numberOfXsInThisWinningCombo++;
-          possibleNextPlay = (squaresOnTheBoard[WINNINGCOMBINATIONS[i][0]] == 2) ? (WINNINGCOMBINATIONS[i][1]) : (WINNINGCOMBINATIONS[i][0]);
+          possibleNextPlay = (squaresOnTheBoard[WINNINGCOMBINATIONS[currentWinningCombo][0]] == 2) ? (WINNINGCOMBINATIONS[currentWinningCombo][1]) : (WINNINGCOMBINATIONS[currentWinningCombo][0]);
         }
         
         if((numberOfXsInThisWinningCombo == 2) && (squaresOnTheBoard[possibleNextPlay] == 0)) {
@@ -117,23 +115,23 @@ class Board {
       
     //if cannot win, block user
     if(nextPlayForComputer == 9) {
-      for(int j = 0; j < 8; j++) {
+      for(int currentWinningCombo = 0; currentWinningCombo < 8; currentWinningCombo++) {
         int numberOfOsInThisWinningCombo = 0;
-        int possibleNextPlay = WINNINGCOMBINATIONS[j][0];
+        int possibleNextPlay = WINNINGCOMBINATIONS[currentWinningCombo][0];
       
-        if(squaresOnTheBoard[WINNINGCOMBINATIONS[j][0]] == 1) {
+        if(squaresOnTheBoard[WINNINGCOMBINATIONS[currentWinningCombo][0]] == 1) {
           numberOfOsInThisWinningCombo++;
-          possibleNextPlay = WINNINGCOMBINATIONS[j][1];
+          possibleNextPlay = WINNINGCOMBINATIONS[currentWinningCombo][1];
         }
         
-        if(squaresOnTheBoard[WINNINGCOMBINATIONS[j][1]] == 1) {
+        if(squaresOnTheBoard[WINNINGCOMBINATIONS[currentWinningCombo][1]] == 1) {
           numberOfOsInThisWinningCombo++;
-          possibleNextPlay = WINNINGCOMBINATIONS[j][2];
+          possibleNextPlay = WINNINGCOMBINATIONS[currentWinningCombo][2];
         }
         
-        if(squaresOnTheBoard[WINNINGCOMBINATIONS[j][2]] == 1) {
+        if(squaresOnTheBoard[WINNINGCOMBINATIONS[currentWinningCombo][2]] == 1) {
           numberOfOsInThisWinningCombo++;
-          possibleNextPlay = (squaresOnTheBoard[WINNINGCOMBINATIONS[j][0]] == 1) ? (WINNINGCOMBINATIONS[j][1]) : (WINNINGCOMBINATIONS[j][0]);
+          possibleNextPlay = (squaresOnTheBoard[WINNINGCOMBINATIONS[currentWinningCombo][0]] == 1) ? (WINNINGCOMBINATIONS[currentWinningCombo][1]) : (WINNINGCOMBINATIONS[currentWinningCombo][0]);
         }
         
         if((numberOfOsInThisWinningCombo == 2) && (squaresOnTheBoard[possibleNextPlay] == 0)) {
