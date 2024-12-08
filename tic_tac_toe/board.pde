@@ -70,7 +70,7 @@ class Board {
                 possibleNextPlay = (squaresOnTheBoard[winningCombinations[i][0]] == 2) ? (winningCombinations[i][1]) : (winningCombinations[i][0]);
               }
               
-              if(numberOfXsInThisWinningCombo == 2) {
+              if((numberOfXsInThisWinningCombo == 2) && (squaresOnTheBoard[possibleNextPlay] == 0)) {
                 nextPlayForComputer = possibleNextPlay;
               }
             }
@@ -97,10 +97,14 @@ class Board {
                 possibleNextPlay = (squaresOnTheBoard[winningCombinations[j][0]] == 1) ? (winningCombinations[j][1]) : (winningCombinations[j][0]);
               }
               
-              if(numberOfOsInThisWinningCombo == 2) {
+              if((numberOfOsInThisWinningCombo == 2) && (squaresOnTheBoard[possibleNextPlay] == 0)) {
                 nextPlayForComputer = possibleNextPlay;
               }
             }
+          }
+          
+          if((nextPlayForComputer == 9) && (squaresOnTheBoard[4] == 0)) {
+            nextPlayForComputer = 4;
           }
           
           //if no win play or blocking, pick random
