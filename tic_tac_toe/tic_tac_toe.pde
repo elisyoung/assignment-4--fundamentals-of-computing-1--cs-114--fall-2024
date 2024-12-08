@@ -8,7 +8,7 @@ void setup() {
   strokeWeight(10);
   stroke(100, 100, 200);
   
-  myBoard.drawBoard();
+  myShapes.drawBoard();
   
   stroke(255, 255, 255);
   noFill();

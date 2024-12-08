@@ -2,6 +2,17 @@ class Shapes {
   Shapes() {
   }
   
+  void drawBoard() {
+    line((boardSize/3), 0, (boardSize/3), (boardSize));
+    line((boardSize * 2 / 3), 0, (boardSize * 2 / 3), boardSize);
+    line(0, (boardSize/3), boardSize, (boardSize/3));
+    line(0, (boardSize * 2 / 3), boardSize, (boardSize * 2 / 3));
+    line(0, 0, 0, boardSize);
+    line(0, 0, boardSize, 0);
+    line(boardSize, 0, boardSize, boardSize);
+    line(0, boardSize, boardSize, boardSize);
+  }
+  
   void drawShape(String shapeType, int locationOfShape){
     int rightSideOfSquareX = (boardSize / 3) * ((locationOfShape % 3) + 1) - 10;
     int leftSideOfSquareX = (boardSize / 3) * ((locationOfShape % 3)) + 10;
