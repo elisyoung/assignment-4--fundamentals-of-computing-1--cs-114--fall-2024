@@ -22,5 +22,5 @@ void draw(){
 }
 
 void keyPressed() {
-  myBoard.playUserMove();
+  myBoard.nextMove();
 }

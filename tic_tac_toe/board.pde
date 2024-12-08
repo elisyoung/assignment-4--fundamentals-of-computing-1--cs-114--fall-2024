@@ -24,7 +24,7 @@ class Board {
     return winningIndex;
   }
   
-  void playUserMove() {
+  void nextMove() {
     int nextPlayForComputer;
     boolean computerWins = false;
     boolean userWins = false;
