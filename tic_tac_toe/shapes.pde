@@ -3,21 +3,21 @@ class Shapes {
   }
   
   void drawBoard() {
-    line((boardSize/3), 0, (boardSize/3), (boardSize));
-    line((boardSize * 2 / 3), 0, (boardSize * 2 / 3), boardSize);
-    line(0, (boardSize/3), boardSize, (boardSize/3));
-    line(0, (boardSize * 2 / 3), boardSize, (boardSize * 2 / 3));
-    line(0, 0, 0, boardSize);
-    line(0, 0, boardSize, 0);
-    line(boardSize, 0, boardSize, boardSize);
-    line(0, boardSize, boardSize, boardSize);
+    line((BOARDSIZE/3), 0, (BOARDSIZE/3), (BOARDSIZE));
+    line((BOARDSIZE * 2 / 3), 0, (BOARDSIZE * 2 / 3), BOARDSIZE);
+    line(0, (BOARDSIZE/3), BOARDSIZE, (BOARDSIZE/3));
+    line(0, (BOARDSIZE * 2 / 3), BOARDSIZE, (BOARDSIZE * 2 / 3));
+    line(0, 0, 0, BOARDSIZE);
+    line(0, 0, BOARDSIZE, 0);
+    line(BOARDSIZE, 0, BOARDSIZE, BOARDSIZE);
+    line(0, BOARDSIZE, BOARDSIZE, BOARDSIZE);
   }
   
   void drawShape(String shapeType, int locationOfShape){
-    int rightSideOfSquareX = (boardSize / 3) * ((locationOfShape % 3) + 1) - 10;
-    int leftSideOfSquareX = (boardSize / 3) * ((locationOfShape % 3)) + 10;
-    int topSideOfSquareY = (boardSize / 3) * (locationOfShape / 3) + 10;
-    int bottomSideOfSquareY = (boardSize / 3) * ((locationOfShape / 3) + 1) - 10;
+    int rightSideOfSquareX = (BOARDSIZE / 3) * ((locationOfShape % 3) + 1) - 10;
+    int leftSideOfSquareX = (BOARDSIZE / 3) * ((locationOfShape % 3)) + 10;
+    int topSideOfSquareY = (BOARDSIZE / 3) * (locationOfShape / 3) + 10;
+    int bottomSideOfSquareY = (BOARDSIZE / 3) * ((locationOfShape / 3) + 1) - 10;
     int middleOfSquareX = (rightSideOfSquareX + leftSideOfSquareX) / 2;
     int middleOfSquareY = (topSideOfSquareY + bottomSideOfSquareY) / 2;
     
@@ -32,7 +32,7 @@ class Shapes {
       case "O":
       case "o":
       case "0":
-        circle(middleOfSquareX, middleOfSquareY, boardSize/3 - 20);
+        circle(middleOfSquareX, middleOfSquareY, BOARDSIZE/3 - 20);
         
         break;
     }

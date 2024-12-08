@@ -1,5 +1,5 @@
-int boardSize = 500;
-int[][] winningCombinations = {  {0, 4, 8},
+final int BOARDSIZE = 500;
+final int[][] WINNINGCOMBINATIONS = {  {0, 4, 8},
                                  {2, 4, 6},
                                  {0, 3, 6},
                                  {1, 4, 7},
