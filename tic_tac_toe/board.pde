@@ -103,11 +103,24 @@ class Board {
             }
           }
           
+          //if no win play or blocking, take middle square
           if((nextPlayForComputer == 9) && (squaresOnTheBoard[4] == 0)) {
             nextPlayForComputer = 4;
           }
           
-          //if no win play or blocking, pick random
+          //if no win play, blocking, or middle, take a corner
+          if(nextPlayForComputer == 9) {
+            if(squaresOnTheBoard[0] == 0)
+              nextPlayForComputer = 0;
+            if(squaresOnTheBoard[2] == 0)
+              nextPlayForComputer = 2;
+            if(squaresOnTheBoard[6] == 0)
+              nextPlayForComputer = 6;
+            if(squaresOnTheBoard[8] == 0)
+              nextPlayForComputer = 8;
+          }
+          
+          //if none of above possible, pick random
           while((nextPlayForComputer == 9) || (squaresOnTheBoard[nextPlayForComputer] != 0)) {
             int randomNumber = int(random(8));
             if(squaresOnTheBoard[randomNumber] == 0) {
